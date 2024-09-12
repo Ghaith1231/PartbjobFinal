@@ -1,4 +1,8 @@
 PartBJob
+
+this is my github link to this assessment https://github.com/Ghaith1231/Partbjob.git
+
+
 Prerequisites:
 MySQL must be installed on your local machine.
 Access to the .sql file containing the database dump.
