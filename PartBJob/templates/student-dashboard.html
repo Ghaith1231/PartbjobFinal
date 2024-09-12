@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <h3 style="text-align: center"> Search for your new Job!</h3>
+    <form method="POST" action="/dashboard" class="ghaith-form">
+        {{ form.csrf_token }}
+        {{ form.search }}{{ form.submit }}
+    </form>
+    <div>
+    {% if search == True %}
+        <h2>Search Results</h2>
+
+        {% if results|length <1 %}
+            No Jobs Found!
+        {% else %}
+
+            {% for res in results %}
+
+                <div class="job">
+                    <h4>{{ res.title }}</h4><br>
+                    Description:<br>
+                    {{ res.description }}<br><br>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        <h2>Latest Jobs</h2>
+
+        {% if results|length <1 %}
+            No Jobs Found!
+        {% else %}
+
+            {% for res in results %}
+
+                <div class="job">
+                    <h4>{{ res.title }}</h4><br>
+                    Description:<br>
+                    {{ res.description }}<br><br>
+                    {% if session['id'] %}
+                        <a href="/apply/{{ res.id }}">Apply Now!</a>
+                    {% else %}
+                        Please Login to Apply!
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    </div>
+
+{% endblock %}

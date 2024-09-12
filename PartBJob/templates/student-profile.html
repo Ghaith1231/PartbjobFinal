@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>My Profile</h1>
+    <form method="POST" action="/profile" class="ghaith-form" enctype="multipart/form-data">
+        {{ form.csrf_token }}<br>
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+
+        {{ form.last_name.label }}
+        {{ form.last_name }}
+
+        {{ form.phone.label }} {{ form.phone }}<br>
+        {{ form.photo.label }} <span>Uploading a new photo will overwrite the existing photo!!</span>{{ form.photo }}<br>
+        {{ form.delete_photo.label }} <span>Tick the box below to delete your current photo!</span> {{ form.delete_photo }}
+        {{ form.education.label }} {{ form.education }}<br>
+        {{ form.experience.label }} {{ form.experience }}<br>
+        {{ form.skills.label }} <span>Enter your skills as a comma seperated list!</span> {{ form.skills }}<br>
+        {{ form.submit }}
+
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+     <div class="job">
+            <h4>{{ job.title }}</h4><br>
+            Description:<br>
+            {{ job.description }}<br><br>
+     </div>
+
+    <h1>Applications</h1>
+
+    {% for res in apps %}
+
+                <div class="student">
+                    <div class="left">
+                        <img class="" src="/uploads/{{ res.photo }}" alt="student profile photo">
+                    </div>
+                    <div class="right">
+                        <h4>{{ res.first_name }} {{ res.last_name }}</h4><br>
+                        Phone: {{ res.phone }}<br><br>
+                        Skills:<br>
+                        {{ res.skills }}<br><br>
+                        Education:<br>
+                        {{ res.education }}<br><br>
+                        Experience:<br>
+                        {{ res.experience }}
+                    </div>
+                </div>
+            {% endfor %}
+
+
+{% endblock %}

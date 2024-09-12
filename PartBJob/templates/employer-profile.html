@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>My Employer Profile</h1>
+    <form method="POST" action="/profile" class="ghaith-form" enctype="multipart/form-data">
+        {{ form.csrf_token }}<br>
+        {{ form.name.label }}
+        {{ form.name }}
+
+        {{ form.email.label }}
+        {{ form.email }}
+
+        {{ form.website.label }} {{ form.website }}<br>
+        {{ form.photo.label }} <span>Uploading a new photo will overwrite the existing photo!!</span>{{ form.photo }}<br>
+        {{ form.delete_photo.label }} <span>Tick the box below to delete your current photo!</span> {{ form.delete_photo }}
+        {{ form.submit }}<br>
+</form>
+{% endblock %}

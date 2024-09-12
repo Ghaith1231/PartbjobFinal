@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"><span>Gha</span>ith</a>
+
+        <nav class="navbar">
+            <a href="/" class="active">Home</a>
+            <a href="/dashboard" class="active">Dashboard</a>
+
+
+            {% if session['type'] == 's' %}
+                <a href="/profile" class="active">My Profile</a>
+            {% elif session['type'] == 'e' %}
+                <a href="/profile" class="active">Profile</a>
+                <a href="/jobs" class="active">My Jobs</a>
+                <a href="/newjob" class="active">Create New Job</a>
+            {% endif %}
+
+        </nav>
+
+        {% if session['id'] %}
+            <a href="logout" class="header-btn">Logout</a>
+        {% else %}
+            <a href="login" class="header-btn">Login</a>
+            <a href="/signup" class="header-btn">Signup</a>
+        {% endif %}
+    </header>
+
+{#    <section class="about">#}
+{#        <div class="about-content">#}
+{#            {% block content %}#}
+{#            {% endblock %}#}
+{#        </div>#}
+{#    </section>#}
+
+    <section class="about">
+        {% block content %}
+        {% endblock %}
+    </section>
+
+</body>
+</html>
+
+<style>
+    bodytt {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    .contact-info {
+        list-style: none;
+        padding: 0;
+    }
+    .contact-info li {
+        margin: 15px 0;
+        text-align: center;
+    }
+    .contact-info a {
+        color: aqua;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+</style>

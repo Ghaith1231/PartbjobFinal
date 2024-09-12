@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Create New Job</h1>
+    <form method="POST" action="/newjob" class="ghaith-form">
+        {{ form.csrf_token }}<br>
+        {{ form.title.label }}
+        {{ form.title }}
+
+        {{ form.description.label }}
+        {{ form.description }}
+
+        {{ form.submit }}
+
+</form>
+{% endblock %}

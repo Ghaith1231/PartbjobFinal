@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>My Posted Jobs</h1>
+    <form method="POST" action="/profile" class="ghaith-form" enctype="multipart/form-data">
+
+    </form>
+
+    {% for job in jobs %}
+        <div class="job">
+
+            <h4>{{ job.title }}</h4><br>
+            Description:<br>
+            {{ job.description }}<br><br>
+            <a href="/closejob/{{ job.id }}">Close Job</a> |
+            <a href="/applications/{{ job.id }}">View Applications</a>
+            <br>
+            <br>
+
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

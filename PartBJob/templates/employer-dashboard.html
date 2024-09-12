@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <form method="POST" action="/dashboard" class="ghaith-form">
+        {{ form.csrf_token }}
+        {{ form.search }}{{ form.submit }}
+    </form>
+    <div>
+
+    {% if results|length < 1 %}
+        No students found
+    {% else %}
+        {% for res in results %}
+
+                <div class="student">
+                    <div class="left">
+                        <img class="" src="/uploads/{{ res.photo }}" alt="student profile photo">
+                    </div>
+                    <div class="right">
+                        <h4>{{ res.first_name }} {{ res.last_name }}</h4><br>
+                        Phone: {{ res.phone }}<br><br>
+                        Skills:<br>
+                        {{ res.skills }}<br><br>
+                        Education:<br>
+                        {{ res.education }}<br><br>
+                        Experience:<br>
+                        {{ res.experience }}
+                    </div>
+                </div>
+            {% endfor %}
+    {% endif %}
+
+    </div>
+
+
+
+{% endblock %}
